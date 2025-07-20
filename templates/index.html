@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Salary Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Salary Prediction</h1>
+        <form method="POST" action="/predict">
+            <label for="age">Age:</label>
+            <input type="number" name="age" id="age" required>
+
+            <label for="hours_per_week">Working Hours Per Week:</label>
+            <input type="number" name="hours_per_week" id="hours_per_week" required>
+
+            <label for="workclass">Work Class:</label>
+            <select name="workclass" id="workclass" required>
+                <option value="Private">Private</option>
+                <option value="Self-emp-not-inc">Self-Employed (Not Incorporated)</option>
+                <option value="Self-emp-inc">Self-Employed (Incorporated)</option>
+                <option value="Federal-gov">Federal Government</option>
+                <option value="State-gov">State Government</option>
+                <option value="Local-gov">Local Government</option>
+                <option value="Without-pay">Without Pay</option>
+                <option value="Never-worked">Never Worked</option>
+            </select>
+
+            <label for="country">Country:</label>
+            <select name="country" id="country" required>
+                <option value="United-States">United States</option>
+                <option value="India">India</option>
+                <option value="Canada">Canada</option>
+                <option value="Mexico">Mexico</option>
+                <option value="Germany">Germany</option>
+                <option value="Philippines">Philippines</option>
+                <option value="China">China</option>
+                <option value="England">England</option>
+                <!-- Add more countries as needed -->
+            </select>
+
+            <input type="submit" value="Predict Salary">
+        </form>
+
+        {% if prediction %}
+            <div class="result">{{ prediction }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
